@@ -1,0 +1,309 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #ffffff;
+  --surface: #f6f8fb;
+  --ink: #0f172a;
+  --muted: #475569;
+  --line: #d8dee9;
+  --line-strong: #8591a5;
+  --brand: #1d4ed8;
+  --on-brand: #ffffff;
+  --accent: #f59e0b;
+  --accent-ink: #1a1204;
+  --danger: #b91c1c;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #172033;
+  --surface: #1f2b44;
+  --ink: #eaf0fa;
+  --muted: #b4c0d6;
+  --line: #3a4a68;
+  --line-strong: #6b7c9c;
+  --brand: #8aaeff;
+  --on-brand: #0f1a2e;
+  --accent: #f5a524;
+  --accent-ink: #1a1204;
+  --danger: #fca5a5;
+}
+
+@layer base {
+  html {
+    scroll-padding-top: 5rem;
+  }
+  body {
+    @apply bg-bg text-ink font-sans antialiased;
+    line-height: 1.65;
+    transition:
+      background-color 0.2s,
+      color 0.2s;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tight;
+    line-height: 1.15;
+  }
+  ::selection {
+    background: var(--brand);
+    color: var(--on-brand);
+  }
+  ::placeholder {
+    color: var(--muted);
+    opacity: 0.85;
+  }
+  :focus-visible {
+    outline: 2px solid var(--brand);
+    outline-offset: 3px;
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-page px-5 sm:px-8;
+  }
+  .btn {
+    @apply inline-flex items-center justify-center rounded-md px-5 py-3 text-sm font-medium transition-colors duration-150;
+  }
+  .btn-primary {
+    @apply bg-accent text-accent-ink hover:brightness-95;
+  }
+  .btn-secondary {
+    @apply border border-line-strong text-ink hover:border-brand hover:text-brand;
+  }
+  .field {
+    @apply w-full rounded-md border border-line-strong bg-surface px-3 py-2.5 text-sm;
+  }
+  .tag {
+    @apply rounded border border-line px-2 py-0.5 font-mono text-xs text-muted;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    transition: none !important;
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
+/* ---------- Motion ---------- */
+:root {
+  --ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes drop {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(8px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes shimmer {
+  from {
+    background-position: 200% 0;
+  }
+  to {
+    background-position: -200% 0;
+  }
+}
+
+/* Page change: a quick fade */
+.page-in {
+  animation: fade 0.25s ease-out;
+}
+
+/* Home hero: items rise one after another */
+.rise > * {
+  animation: rise 0.5s var(--ease) backwards;
+}
+.rise > :nth-child(2) {
+  animation-delay: 80ms;
+}
+.rise > :nth-child(3) {
+  animation-delay: 160ms;
+}
+.rise > :nth-child(4) {
+  animation-delay: 240ms;
+}
+.rise > :nth-child(5) {
+  animation-delay: 320ms;
+}
+
+/* Scroll reveal */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition:
+    opacity 0.5s var(--ease),
+    transform 0.5s var(--ease),
+    border-color 0.2s,
+    background-color 0.2s,
+    color 0.2s,
+    box-shadow 0.2s;
+}
+.reveal-in {
+  opacity: 1;
+  transform: none;
+}
+
+/* Links and buttons */
+:where(a, button) {
+  transition:
+    color 0.15s ease,
+    background-color 0.15s ease,
+    border-color 0.15s ease;
+}
+.btn {
+  transition:
+    background-color 0.15s,
+    border-color 0.15s,
+    color 0.15s,
+    filter 0.15s,
+    transform 0.2s var(--ease),
+    box-shadow 0.2s;
+}
+.btn:hover {
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: translateY(0);
+}
+.btn-primary:hover {
+  box-shadow: 0 6px 16px rgb(0 0 0 / 0.14);
+}
+
+/* Cards */
+:where(main article.border, main li.border) {
+  transition:
+    border-color 0.2s,
+    box-shadow 0.2s;
+}
+:where(main article.border, main li.border):hover {
+  border-color: var(--brand);
+  box-shadow: 0 8px 24px rgb(0 0 0 / 0.08);
+}
+
+/* Header: shadow after scrolling, and a thin scroll progress line */
+header.sticky {
+  transition: box-shadow 0.2s;
+}
+html[data-scrolled] header.sticky {
+  box-shadow: 0 2px 14px rgb(0 0 0 / 0.08);
+}
+header.sticky::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -1px;
+  width: 100%;
+  height: 2px;
+  background: var(--brand);
+  transform: scaleX(var(--scroll, 0));
+  transform-origin: left;
+  pointer-events: none;
+}
+
+/* Desktop menu: underline that draws in on hover, and stays on the current page */
+header nav[aria-label="Primary"] a:not(.btn) {
+  position: relative;
+}
+header nav[aria-label="Primary"] a:not(.btn)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 4px;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.25s var(--ease);
+}
+header nav[aria-label="Primary"] a:not(.btn):hover::after,
+header nav[aria-label="Primary"] a[aria-current="page"]::after {
+  transform: scaleX(1);
+}
+
+/* Menus, chat and FAQ answers */
+#mobile-menu {
+  animation: drop 0.2s ease-out backwards;
+}
+.pop {
+  animation: pop 0.2s var(--ease) backwards;
+  transform-origin: bottom right;
+}
+details[open] > :not(summary) {
+  animation: fade 0.25s ease-out;
+}
+
+/* Chat button slides in shortly after the page loads */
+.chat-fab {
+  animation: pop 0.4s var(--ease) 1.2s backwards;
+}
+
+/* Form fields */
+.field {
+  transition: border-color 0.15s;
+}
+.field:focus {
+  border-color: var(--brand);
+}
+
+/* Loading skeleton */
+.skeleton {
+  border-radius: 4px;
+  background: linear-gradient(
+    90deg,
+    var(--surface) 25%,
+    var(--line) 50%,
+    var(--surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  header.sticky::after {
+    display: none;
+  }
+}
+.fade-in {
+  animation: fade 0.3s ease-out;
+}
