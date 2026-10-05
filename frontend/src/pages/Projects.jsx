@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { projects } from "../data/projects.js";
+import { projects, testimonials } from "../data/projects.js";
 import { usePage } from "../lib/usePage.js";
 
 const projectHighlights = [
@@ -17,6 +17,10 @@ export default function Projects() {
 
   const [tech, setTech] = useState("All");
   const [visibleCount, setVisibleCount] = useState(3);
+  const [testimonialIndex, setTestimonialIndex] = useState(0);
+  const [visibleTestimonials, setVisibleTestimonials] = useState(1);
+  const [testimonialsPaused, setTestimonialsPaused] = useState(false);
+  const [reducedMotion, setReducedMotion] = useState(false);
   const techFilters = [
     "All",
     "React",
@@ -30,6 +34,49 @@ export default function Projects() {
   ];
   const shown =
     tech === "All" ? projects : projects.filter((p) => p.tech.includes(tech));
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const updateMotionPreference = () => setReducedMotion(mediaQuery.matches);
+    updateMotionPreference();
+    mediaQuery.addEventListener("change", updateMotionPreference);
+    return () => mediaQuery.removeEventListener("change", updateMotionPreference);
+  }, []);
+
+  useEffect(() => {
+    const smallScreen = window.matchMedia("(min-width: 640px)");
+    const largeScreen = window.matchMedia("(min-width: 1024px)");
+    const updateVisibleTestimonials = () => {
+      setVisibleTestimonials(largeScreen.matches ? 3 : smallScreen.matches ? 2 : 1);
+    };
+    updateVisibleTestimonials();
+    smallScreen.addEventListener("change", updateVisibleTestimonials);
+    largeScreen.addEventListener("change", updateVisibleTestimonials);
+    return () => {
+      smallScreen.removeEventListener("change", updateVisibleTestimonials);
+      largeScreen.removeEventListener("change", updateVisibleTestimonials);
+    };
+  }, []);
+
+  useEffect(() => {
+    setTestimonialIndex((index) =>
+      Math.min(index, Math.max(0, testimonials.length - visibleTestimonials)),
+    );
+  }, [visibleTestimonials]);
+
+  useEffect(() => {
+    if (testimonials.length < 2 || testimonialsPaused || reducedMotion) return;
+    const interval = window.setInterval(() => {
+      setTestimonialIndex((index) => {
+        const lastStartIndex = Math.max(
+          0,
+          testimonials.length - visibleTestimonials,
+        );
+        return index >= lastStartIndex ? 0 : index + 1;
+      });
+    }, 5000);
+    return () => window.clearInterval(interval);
+  }, [reducedMotion, testimonialsPaused, visibleTestimonials]);
 
   return (
     <section className="container-page py-16 sm:py-20">
@@ -186,6 +233,145 @@ export default function Projects() {
             </div>
           )}
         </>
+      )}
+
+      {testimonials.length > 0 && (
+        <section className="mt-16" aria-labelledby="testimonials-heading">
+          <h2 id="testimonials-heading" className="text-2xl font-bold sm:text-3xl">
+            What clients say
+          </h2>
+          <div
+            className="mt-8 overflow-hidden"
+            aria-roledescription="carousel"
+            aria-label="Client testimonials"
+          >
+            <div
+              className="flex transition-transform duration-500 ease-in-out motion-reduce:transition-none"
+              style={{
+                width: `${(testimonials.length / visibleTestimonials) * 100}%`,
+                transform: `translateX(-${testimonialIndex * (100 / testimonials.length)}%)`,
+              }}
+            >
+              {testimonials.map((testimonial, index) => (
+                <article
+                  key={testimonial.id}
+                  className="flex shrink-0 flex-col rounded-xl border border-line bg-surface p-6"
+                  style={{ width: `${100 / testimonials.length}%` }}
+                  role="group"
+                  aria-roledescription="slide"
+                  aria-label={`${index + 1} of ${testimonials.length}`}
+                  aria-hidden={
+                    index < testimonialIndex ||
+                    index >= testimonialIndex + visibleTestimonials
+                  }
+                >
+                  {testimonial.highlight && (
+                    <p className="text-sm font-semibold text-brand">
+                      {testimonial.highlight}
+                    </p>
+                  )}
+                  <blockquote className="mt-4 flex-1 text-muted">
+                    “{testimonial.quote}”
+                  </blockquote>
+                  <div className="mt-6 flex items-center gap-3 border-t border-line pt-4">
+                    {testimonial.avatar ? (
+                      <img
+                        src={testimonial.avatar}
+                        alt=""
+                        loading="lazy"
+                        className="h-10 w-10 rounded-full object-cover"
+                      />
+                    ) : (
+                      <span
+                        aria-hidden="true"
+                        className="flex h-10 w-10 items-center justify-center rounded-full bg-bg text-sm font-bold"
+                      >
+                        {testimonial.name
+                          .split(" ")
+                          .map((part) => part[0])
+                          .join("")}
+                      </span>
+                    )}
+                    <div>
+                      <p className="font-bold">{testimonial.name}</p>
+                      <p className="text-sm text-muted">
+                        {testimonial.role}
+                        {testimonial.company && ` · ${testimonial.company}`}
+                      </p>
+                    </div>
+                    {testimonial.rating != null && (
+                      <span
+                        role="img"
+                        className="ml-auto whitespace-nowrap text-sm"
+                        aria-label={`Rated ${testimonial.rating} out of 5 stars`}
+                      >
+                        <span aria-hidden="true" className="text-amber-500">
+                          {"★".repeat(Math.round(testimonial.rating))}
+                        </span>
+                        <span aria-hidden="true" className="text-muted">
+                          {"☆".repeat(5 - Math.round(testimonial.rating))}
+                        </span>
+                        <span className="ml-1 text-muted">
+                          {testimonial.rating}/5
+                        </span>
+                      </span>
+                    )}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+          {testimonials.length > 1 && (
+            <div className="mt-5 flex flex-wrap items-center justify-center gap-3">
+              <button
+                type="button"
+                className="btn btn-secondary !py-2"
+                aria-label="Previous testimonial"
+                onClick={() =>
+                  setTestimonialIndex((index) => {
+                    const lastStartIndex = Math.max(
+                      0,
+                      testimonials.length - visibleTestimonials,
+                    );
+                    return index <= 0 ? lastStartIndex : index - 1;
+                  })
+                }
+              >
+                Previous
+              </button>
+              {!reducedMotion && (
+                <button
+                  type="button"
+                  className="btn btn-secondary !py-2"
+                  aria-label={
+                    testimonialsPaused
+                      ? "Resume testimonials"
+                      : "Pause testimonials"
+                  }
+                  onClick={() => setTestimonialsPaused((paused) => !paused)}
+                >
+                  {testimonialsPaused ? "Play" : "Pause"}
+                </button>
+              )}
+              <button
+                type="button"
+                className="btn btn-secondary !py-2"
+                aria-label="Next testimonial"
+                onClick={() =>
+                  setTestimonialIndex((index) => {
+                    const lastStartIndex = Math.max(
+                      0,
+                      testimonials.length - visibleTestimonials,
+                    );
+                    return index >= lastStartIndex ? 0 : index + 1;
+                  })
+                }
+              >
+                Next
+              </button>
+            </div>
+          )}
+        </section>
       )}
 
       <div className="mt-16 rounded-3xl border border-line bg-surface p-8 text-center">

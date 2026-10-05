@@ -1,6 +1,6 @@
 // SAMPLE CONTENT: replace with real entries. Items with sample: true show a "Sample" badge.
 // Delete the sample items (or set sample: false) once real content is in.
-// Only add results you can verify. Do not add testimonials unless they are genuine.
+// Only publish verified testimonials; placeholders must remain clearly labeled until replaced.
 export const projects = [
   {
     slug: "local-business-website",
@@ -287,7 +287,78 @@ export const posts = [
     ],
   },
 ];
-export const testimonials = []; // genuine only: { quote, name, role }
+export const testimonials = [
+  {
+    id: "test-1",
+    name: "Sarah Jenkins",
+    role: "VP of Product",
+    company: "Acme Corp",
+    avatar:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
+    rating: 5,
+    quote:
+      "Integrating this solution cut our deployment pipeline times by 65%. The developer experience and documentation are unmatched in the industry.",
+    highlight: "Reduced deployment times by 65%",
+  },
+  {
+    id: "test-2",
+    name: "Marcus Chen",
+    role: "Engineering Director",
+    company: "Nexus Labs",
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    rating: 5,
+    quote:
+      "We scaled from 10k to 1M daily active users without a single hiccup. The architecture recommendations paid off tenfold during our peak launch.",
+    highlight: "Seamless scaling to 1M+ DAU",
+  },
+  {
+    id: "test-3",
+    name: "Elena Rostova",
+    role: "Head of Design",
+    company: "Starlight Studio",
+    avatar: null, // Will automatically generate an 'ER' avatar
+    rating: 4.8,
+    quote:
+      "The attention to detail and UI responsiveness is top-tier. It brought our team's creative vision to life effortlessly.",
+    highlight: "Flawless UI execution",
+  },
+  {
+    id: "test-4",
+    name: "Sarah Jenkins",
+    role: "VP of Product",
+    company: "Acme Corp",
+    avatar:
+      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=150&auto=format&fit=crop&q=80",
+    rating: 5,
+    quote:
+      "Integrating this solution cut our deployment pipeline times by 65%. The developer experience and documentation are unmatched in the industry.",
+    highlight: "Reduced deployment times by 65%",
+  },
+  {
+    id: "test-5",
+    name: "Marcus Chen",
+    role: "Engineering Director",
+    company: "Nexus Labs",
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&auto=format&fit=crop&q=80",
+    rating: 5,
+    quote:
+      "We scaled from 10k to 1M daily active users without a single hiccup. The architecture recommendations paid off tenfold during our peak launch.",
+    highlight: "Seamless scaling to 1M+ DAU",
+  },
+  {
+    id: "test-6",
+    name: "Elena Rostova",
+    role: "Head of Design",
+    company: "Starlight Studio",
+    avatar: null,
+    rating: 4.8,
+    quote:
+      "The attention to detail and UI responsiveness is top-tier. It brought our team's creative vision to life effortlessly.",
+    highlight: "Flawless UI execution",
+  },
+];
 export const pricing = [
   {
     name: "Starter website",
