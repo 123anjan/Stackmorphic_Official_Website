@@ -1,6 +1,6 @@
 // Single place for identity text. Everything marked SAMPLE must be replaced before launch.
 export const site = {
-  logo: "/frontend/public/logo.png", // SAMPLE: replace the file in public/ with your real logo 
+  logo: "/logo.png", // SAMPLE: replace the file in public/ with your real logo
   brand: "Stackmorphic",
   developer: "Anjan Basak",
   title: "Full-Stack Web Developer",

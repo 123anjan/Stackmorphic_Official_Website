@@ -16,11 +16,16 @@ export default function Header() {
   return (
     <header className="sticky top-0 z-40 border-b border-line bg-bg/95 backdrop-blur">
       <div className="mx-auto flex h-16 w-full max-w-7xl items-center justify-between gap-6 px-5 sm:px-8">
-        <Link to="/" className="flex shrink-0 items-center gap-3 font-display text-lg font-bold">
+        <Link
+          to="/"
+          className="flex shrink-0 items-center gap-3 font-display text-lg font-bold"
+        >
           <img
-            src={site.logo}
-            alt={`${site.brand} logo`}
-            className="h-8 w-8 rounded-full border border-line bg-surface object-cover"
+            src={import.meta.env.BASE_URL + "logo.png"}
+            alt="Brand logo"
+            width="32"
+            height="32"
+            className="h-8 w-8"
           />
           <span>{site.brand}</span>
         </Link>
