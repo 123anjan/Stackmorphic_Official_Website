@@ -79,7 +79,7 @@ export default function Projects() {
   }, [reducedMotion, testimonialsPaused, visibleTestimonials]);
 
   return (
-    <section className="container-page py-16 sm:py-20">
+    <section className="container-page overflow-x-hidden py-16 sm:py-20">
       <div className="grid gap-8 lg:grid-cols-[1.2fr_0.8fr] lg:items-end">
         <div>
           <span className="inline-flex rounded-full border border-line bg-surface px-3 py-1 text-xs font-medium uppercase tracking-[0.18em] text-muted">
