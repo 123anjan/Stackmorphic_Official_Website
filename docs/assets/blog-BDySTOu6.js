@@ -1,0 +1,1 @@
+const n=e=>new Date(e+"T00:00:00").toLocaleDateString("en-GB",{day:"numeric",month:"long",year:"numeric"});function o(e=[]){const a=e.map(t=>t.text||(t.items||[]).join(" ")).join(" ").split(/\s+/).filter(Boolean).length;return Math.max(1,Math.round(a/200))+" min read"}const r=e=>e.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/(^-|-$)/g,"");export{n as f,o as r,r as s};
