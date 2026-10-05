@@ -9,10 +9,12 @@ export default function Footer() {
         <div className="col-span-2 md:col-span-2 lg:col-span-1">
           <div className="flex items-center gap-3">
             <img
-              src={site.logo}
-              alt={`${site.brand} logo`}
-              className="h-8 w-8 rounded-full border border-line bg-surface object-cover"
-            />
+            src={import.meta.env.BASE_URL + "logo.png"}
+            alt="Brand logo"
+            width="32"
+            height="32"
+            className="h-8 w-8"
+          />
             <p className="font-display text-lg font-bold">{site.brand}</p>
           </div>
           <p className="mt-2 max-w-[38ch] text-sm leading-6 text-muted sm:mt-3">
