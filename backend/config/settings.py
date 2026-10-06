@@ -48,8 +48,13 @@ else:
     DEFAULT_FROM_EMAIL = "website@localhost"
 ENQUIRY_TO_EMAIL = env("ENQUIRY_TO_EMAIL", "owner@example.com")
 if not DEBUG:
-    SECURE_SSL_REDIRECT = True
+    SECURE_SSL_REDIRECT = env("SECURE_SSL_REDIRECT", "1") == "1"
     SESSION_COOKIE_SECURE = CSRF_COOKIE_SECURE = True
 
 ANTHROPIC_API_KEY = env("ANTHROPIC_API_KEY", "")
 CHAT_MODEL = env("CHAT_MODEL", "claude-sonnet-5-5")
+
+# --- hosting additions ---
+STATIC_ROOT = BASE_DIR / "staticfiles"
+SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
+CSRF_TRUSTED_ORIGINS = [o for o in env("CSRF_TRUSTED_ORIGINS", "").split(",") if o]
