@@ -1,1 +1,182 @@
-import{u as d,r as i,j as e,a as o}from"./index-CFkYwSC7.js";const u="https://abconda.pythonanywhere.com",p=["Business website","Web application","Redesign","Not sure yet"];function b(){d("Contact","Request a quote or book a call about your website project.");const[s,a]=i.useState({status:"idle",errors:{}});i.useEffect(()=>{if(s.status!=="sent")return;const t=setTimeout(()=>a({status:"idle",errors:{}}),5e3);return()=>clearTimeout(t)},[s.status]);async function c(t){t.preventDefault();const n=t.target;a({status:"sending",errors:{}});const m=Object.fromEntries(new FormData(n));try{const l=await fetch(u+"/api/enquiries/",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(m)});l.ok?(n.reset(),a({status:"sent",errors:{}})):a({status:"error",errors:await l.json().catch(()=>({}))})}catch{a({status:"error",errors:{}})}}const r=t=>s.errors[t]&&e.jsx("p",{role:"alert",className:"mt-1 text-sm text-red-600",children:[].concat(s.errors[t]).join(" ")});return e.jsxs("section",{className:"container-page grid gap-12 py-16 lg:grid-cols-[1fr_1.2fr]",children:[e.jsxs("div",{children:[e.jsx("h1",{className:"text-4xl font-bold",children:"Tell me about your project"}),e.jsx("p",{className:"mt-4 max-w-[50ch] text-muted",children:"Send the details and I will reply with questions or a quote."}),e.jsx("a",{className:"btn btn-secondary mt-6 mr-3",href:o.bookingUrl,target:"_blank",rel:"noopener noreferrer",children:"Book a call"}),e.jsx("a",{className:"btn btn-secondary mt-6",href:"https://wa.me/"+o.whatsapp,target:"_blank",rel:"noopener noreferrer",children:"Chat on WhatsApp"})]}),e.jsxs("form",{onSubmit:c,className:"space-y-4",noValidate:!0,children:[e.jsx("input",{type:"text",name:"website",tabIndex:"-1",autoComplete:"off",className:"hidden","aria-hidden":"true"}),e.jsxs("div",{children:[e.jsx("label",{htmlFor:"name",className:"mb-1 block text-sm",children:"Name"}),e.jsx("input",{id:"name",name:"name",required:!0,className:"field"}),r("name")]}),e.jsxs("div",{children:[e.jsx("label",{htmlFor:"email",className:"mb-1 block text-sm",children:"Email"}),e.jsx("input",{id:"email",name:"email",type:"email",required:!0,className:"field"}),r("email")]}),e.jsxs("div",{children:[e.jsx("label",{htmlFor:"project_type",className:"mb-1 block text-sm",children:"Project type"}),e.jsx("select",{id:"project_type",name:"project_type",className:"field",children:p.map(t=>e.jsx("option",{children:t},t))})]}),e.jsxs("div",{children:[e.jsx("label",{htmlFor:"budget",className:"mb-1 block text-sm",children:"Budget (optional)"}),e.jsx("input",{id:"budget",name:"budget",className:"field"})]}),e.jsxs("div",{children:[e.jsx("label",{htmlFor:"message",className:"mb-1 block text-sm",children:"Message"}),e.jsx("textarea",{id:"message",name:"message",rows:"5",required:!0,className:"field"}),r("message")]}),e.jsx("button",{className:"btn btn-primary",disabled:s.status==="sending",children:s.status==="sending"?"Sending...":"Send enquiry"}),e.jsxs("p",{"aria-live":"polite",className:"fade-in text-sm",children:[s.status==="sent"&&"Enquiry sent. I will reply by email.",s.status==="error"&&"Could not send. Check the fields above and try again."]},s.status)]})]})}export{b as default};
+import { u as d, r as i, j as e, a as o } from "./index-CFkYwSC7.js";
+const u = "https://abconda.pythonanywhere.com",
+  p = ["Business website", "Web application", "Redesign", "Not sure yet"];
+function b() {
+  d("Contact", "Request a quote or book a call about your website project.");
+  const [s, a] = i.useState({ status: "idle", errors: {} });
+  i.useEffect(() => {
+    if (s.status !== "sent") return;
+    const t = setTimeout(() => a({ status: "idle", errors: {} }), 5e3);
+    return () => clearTimeout(t);
+  }, [s.status]);
+  async function c(t) {
+    t.preventDefault();
+    const n = t.target;
+    a({ status: "sending", errors: {} });
+    const m = Object.fromEntries(new FormData(n));
+    try {
+      const l = await fetch(u + "/api/enquiries/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(m),
+      });
+      l.ok
+        ? (n.reset(), a({ status: "sent", errors: {} }))
+        : a({ status: "error", errors: await l.json().catch(() => ({})) });
+    } catch {
+      a({ status: "error", errors: {} });
+    }
+  }
+  const r = (t) =>
+    s.errors[t] &&
+    e.jsx("p", {
+      role: "alert",
+      className: "mt-1 text-sm text-red-600",
+      children: [].concat(s.errors[t]).join(" "),
+    });
+  return e.jsxs("section", {
+    className: "container-page grid gap-12 py-16 lg:grid-cols-[1fr_1.2fr]",
+    children: [
+      e.jsxs("div", {
+        children: [
+          e.jsx("h1", {
+            className: "text-4xl font-bold",
+            children: "Tell me about your project",
+          }),
+          e.jsx("p", {
+            className: "mt-4 max-w-[50ch] text-muted",
+            children:
+              "Send the details and I will reply with questions or a quote.",
+          }),
+          e.jsx("a", {
+            className: "btn btn-secondary mt-6 mr-3",
+            href: o.bookingUrl,
+            target: "_blank",
+            rel: "noopener noreferrer",
+            children: "Book a call",
+          }),
+          e.jsx("a", {
+            className: "btn btn-secondary mt-6",
+            href: "https://wa.me/" + o.whatsapp,
+            target: "_blank",
+            rel: "noopener noreferrer",
+            children: "Chat on WhatsApp",
+          }),
+        ],
+      }),
+      e.jsxs("form", {
+        onSubmit: c,
+        className: "space-y-4",
+        noValidate: !0,
+        children: [
+          e.jsx("input", {
+            type: "text",
+            name: "website",
+            tabIndex: "-1",
+            autoComplete: "off",
+            className: "hidden",
+            "aria-hidden": "true",
+          }),
+          e.jsxs("div", {
+            children: [
+              e.jsx("label", {
+                htmlFor: "name",
+                className: "mb-1 block text-sm",
+                children: "Name",
+              }),
+              e.jsx("input", {
+                id: "name",
+                name: "name",
+                required: !0,
+                className: "field",
+              }),
+              r("name"),
+            ],
+          }),
+          e.jsxs("div", {
+            children: [
+              e.jsx("label", {
+                htmlFor: "email",
+                className: "mb-1 block text-sm",
+                children: "Email",
+              }),
+              e.jsx("input", {
+                id: "email",
+                name: "email",
+                type: "email",
+                required: !0,
+                className: "field",
+              }),
+              r("email"),
+            ],
+          }),
+          e.jsxs("div", {
+            children: [
+              e.jsx("label", {
+                htmlFor: "project_type",
+                className: "mb-1 block text-sm",
+                children: "Project type",
+              }),
+              e.jsx("select", {
+                id: "project_type",
+                name: "project_type",
+                className: "field",
+                children: p.map((t) => e.jsx("option", { children: t }, t)),
+              }),
+            ],
+          }),
+          e.jsxs("div", {
+            children: [
+              e.jsx("label", {
+                htmlFor: "budget",
+                className: "mb-1 block text-sm",
+                children: "Budget (optional)",
+              }),
+              e.jsx("input", {
+                id: "budget",
+                name: "budget",
+                className: "field",
+              }),
+            ],
+          }),
+          e.jsxs("div", {
+            children: [
+              e.jsx("label", {
+                htmlFor: "message",
+                className: "mb-1 block text-sm",
+                children: "Message",
+              }),
+              e.jsx("textarea", {
+                id: "message",
+                name: "message",
+                rows: "5",
+                required: !0,
+                className: "field",
+              }),
+              r("message"),
+            ],
+          }),
+          e.jsx("button", {
+            className: "btn btn-primary",
+            disabled: s.status === "sending",
+            children: s.status === "sending" ? "Sending..." : "Send enquiry",
+          }),
+          e.jsxs(
+            "p",
+            {
+              "aria-live": "polite",
+              className: "fade-in text-sm",
+              children: [
+                s.status === "sent" && "Enquiry sent. I will reply by email.",
+                s.status === "error" &&
+                  "Could not send. Check the fields above and try again.",
+              ],
+            },
+            s.status,
+          ),
+        ],
+      }),
+    ],
+  });
+}
+export { b as default };
