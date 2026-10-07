@@ -1,4 +1,4 @@
-import { API_BASE as API } from './apiBase.js'
+import { API_BASE as API } from "./apiBase.js";
 const KEY = "client_token";
 
 export const getToken = () => {
