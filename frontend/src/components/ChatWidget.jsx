@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect } from "react";
 import { Link } from "react-router-dom";
 
-const API = import.meta.env.VITE_API_URL || "";
+import { API_BASE as API } from "../lib/apiBase.js";
 const START = [
   {
     role: "assistant",

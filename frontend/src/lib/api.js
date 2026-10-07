@@ -1,4 +1,4 @@
-const API = import.meta.env.VITE_API_URL || "";
+import { API_BASE as API } from './apiBase.js'
 const KEY = "client_token";
 
 export const getToken = () => {

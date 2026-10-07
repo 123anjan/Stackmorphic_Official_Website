@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import { site } from "../siteConfig.js";
 import { usePage } from "../lib/usePage.js";
-const API = import.meta.env.VITE_API_URL || "";
+import { API_BASE as API } from "../lib/apiBase.js"
 const types = [
   "Business website",
   "Web application",
