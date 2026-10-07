@@ -12,7 +12,7 @@ export const about = {
 
   // Put your photo in the public folder (for example public/anjan.jpg) and write '/anjan.jpg'.
   // Leave '' to show your initials instead.
-  photo: "/anjan.png",
+  photo: "/frontend/public/anjan.png",
 
   // Short facts. Rows with an empty value are hidden. Fill in only what is true.
   facts: [
