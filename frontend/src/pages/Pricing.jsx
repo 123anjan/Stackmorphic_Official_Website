@@ -142,6 +142,14 @@ export default function Pricing() {
                   </dt>
                   <dd>{inr(b.hosting[ext])}</dd>
                 </div>
+                <div className="flex justify-between gap-4 border-t border-line pt-2">
+                  <dt className="font-medium text-brand">
+                    Google Ads budget (optional)
+                  </dt>
+                  <dd className="whitespace-nowrap font-medium text-brand">
+                    From ₹600 extra
+                  </dd>
+                </div>
               </dl>
               <ul className="mt-6 flex-1 space-y-3 text-sm">
                 {b.freeDomainYear && (
@@ -168,10 +176,26 @@ export default function Pricing() {
             </article>
           ))}
         </div>
-        <p className="mt-4 text-sm text-muted">
+        <p
+          className="mt-4 border-l-4 border-brand bg-surface px-4 py-3 text-sm font-medium text-ink"
+        >
           {bundleNote}
-          {renewalNote && " " + renewalNote}
+          {renewalNote && (
+            <span className="ml-1 font-normal text-muted">{renewalNote}</span>
+          )}
         </p>
+
+        <div className="mt-6 border-l-4 border-brand bg-surface p-4 text-sm">
+          <h3 className="font-bold">Google Ads budget (extra)</h3>
+          <p className="mt-1 text-muted">
+            Ad spend is separate from our service fees. Recharge starts at
+            ₹600. As an indicative estimate in India, average search cost per
+            click is often around ₹5–₹50 for many keywords; highly competitive
+            keywords can cost more. Actual CPC depends on the keywords,
+            industry, location and competition, and will be estimated before
+            the campaign starts.
+          </p>
+        </div>
 
         <h3 className="mt-14 text-xl font-bold">Compare the plans</h3>
         <div className="mt-4 overflow-x-auto border border-line">
