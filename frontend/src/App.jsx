@@ -2,6 +2,7 @@ import { lazy, Suspense, useEffect, useRef } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import Header from "./components/Header.jsx";
 import Footer from "./components/Footer.jsx";
+import DigitalMarketingSection from "./components/DigitalMarketingSection.jsx";
 import Home from "./pages/Home.jsx";
 import ChatWidget from "./components/ChatWidget.jsx";
 import RequireAuth from "./components/RequireAuth.jsx";
@@ -21,6 +22,13 @@ const NotFound = lazy(() => import("./pages/Placeholder.jsx"));
 const BlogPost = lazy(() => import("./pages/BlogPost.jsx"));
 const Account = lazy(() => import("./pages/Account.jsx"));
 const Dashboard = lazy(() => import("./pages/Dashboard.jsx"));
+const marketingPages = new Set([
+  "/",
+  "/services",
+  "/projects",
+  "/pricing",
+  "/process",
+]);
 
 function PageSkeleton() {
   return (
@@ -70,6 +78,9 @@ export default function App() {
               />
               <Route path="*" element={<NotFound name="Page not found" />} />
             </Routes>
+            {marketingPages.has(pathname.replace(/\/+$/, "") || "/") && (
+              <DigitalMarketingSection />
+            )}
           </div>
         </Suspense>
       </main>

@@ -100,10 +100,10 @@ export default function About() {
             </dl>
           )}
           {(site.social.github || site.social.linkedin) && (
-            <p className="mt-6 flex gap-5 text-sm">
+            <p className="mt-6 flex flex-wrap gap-3 text-sm">
               {site.social.github && (
                 <a
-                  className="text-brand underline"
+                  className="btn btn-secondary"
                   href={site.social.github}
                   target="_blank"
                   rel="noopener noreferrer"
@@ -113,7 +113,7 @@ export default function About() {
               )}
               {site.social.linkedin && (
                 <a
-                  className="text-brand underline"
+                  className="btn btn-secondary"
                   href={site.social.linkedin}
                   target="_blank"
                   rel="noopener noreferrer"

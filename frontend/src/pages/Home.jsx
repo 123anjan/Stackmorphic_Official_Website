@@ -79,7 +79,7 @@ export default function Home() {
       <section className="container-page py-16">
         <div className="flex items-end justify-between gap-4">
           <h2 className="text-2xl font-bold sm:text-3xl">What I build</h2>
-          <Link to="/services" className="text-sm text-brand underline">All services</Link>
+          <Link to="/services" className="btn btn-secondary text-sm">All services</Link>
         </div>
         <div className="mt-8 grid gap-px bg-line md:grid-cols-3">
           {services.map(([t, d]) => (
@@ -95,7 +95,7 @@ export default function Home() {
         <div className="container-page">
           <div className="flex items-end justify-between gap-4">
             <h2 className="text-2xl font-bold sm:text-3xl">Selected work</h2>
-            <Link to="/projects" className="text-sm text-brand underline">All projects</Link>
+            <Link to="/projects" className="btn btn-secondary text-sm">All projects</Link>
           </div>
           {projects.length === 0
             ? <p className="mt-4 max-w-[60ch] text-muted">Case studies will appear here once real projects are added.</p>
@@ -124,7 +124,7 @@ export default function Home() {
         <div className="container-page">
           <div className="flex items-end justify-between gap-4">
             <h2 className="text-2xl font-bold sm:text-3xl">How a project runs</h2>
-            <Link to="/process" className="text-sm text-brand underline">Full process</Link>
+            <Link to="/process" className="btn btn-secondary text-sm">Full process</Link>
           </div>
           <ol className="mt-8 grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
             {steps.map(([t], i) => (
