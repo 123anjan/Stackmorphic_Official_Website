@@ -6,6 +6,7 @@ import DigitalMarketingSection from "./components/DigitalMarketingSection.jsx";
 import Home from "./pages/Home.jsx";
 import ChatWidget from "./components/ChatWidget.jsx";
 import RequireAuth from "./components/RequireAuth.jsx";
+import WelcomeGate from "./components/WelcomeGate.jsx";
 import { useScrollReveal } from "./lib/useScrollReveal.js";
 
 const pages = {
@@ -29,6 +30,7 @@ const marketingPages = new Set([
   "/pricing",
   "/process",
 ]);
+const accountPages = new Set(["services", "projects", "pricing", "process"]);
 
 function PageSkeleton() {
   return (
@@ -62,8 +64,20 @@ export default function App() {
           <div key={pathname} className="page-in">
             <Routes>
               <Route path="/" element={<Home />} />
-              {Object.entries(pages).map(([k, C]) => (
-                <Route key={k} path={"/" + k} element={<C />} />
+              {Object.entries(pages).map(([key, Page]) => (
+                <Route
+                  key={key}
+                  path={"/" + key}
+                  element={
+                    accountPages.has(key) ? (
+                      <RequireAuth>
+                        <Page />
+                      </RequireAuth>
+                    ) : (
+                      <Page />
+                    )
+                  }
+                />
               ))}
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/login" element={<Account mode="login" />} />
@@ -86,6 +100,7 @@ export default function App() {
       </main>
       <Footer />
       <ChatWidget />
+      <WelcomeGate />
     </>
   );
 }

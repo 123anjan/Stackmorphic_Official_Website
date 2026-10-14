@@ -4,6 +4,7 @@ import { site, stack } from '../siteConfig.js'
 import { projects } from '../data/projects.js'
 import { services, steps, reasons } from '../data/content.js'
 import { usePage } from '../lib/usePage.js'
+import { useAuth } from '../lib/auth.jsx'
 
 const heroRoles = [
   'full stack developer',
@@ -14,6 +15,7 @@ const heroRoles = [
 ]
 
 export default function Home() {
+  const { user } = useAuth()
   const [roleIndex, setRoleIndex] = useState(0)
   const [visibleCharacters, setVisibleCharacters] = useState(0)
   const [deleting, setDeleting] = useState(false)
@@ -76,7 +78,7 @@ export default function Home() {
         </dl>
       </section>
 
-      <section className="container-page py-16">
+      {user ? <section className="container-page py-16">
         <div className="flex items-end justify-between gap-4">
           <h2 className="text-2xl font-bold sm:text-3xl">What I build</h2>
           <Link to="/services" className="btn btn-secondary text-sm">All services</Link>
@@ -89,9 +91,15 @@ export default function Home() {
             </div>
           ))}
         </div>
-      </section>
+      </section> : <section className="container-page py-16">
+        <h2 className="text-2xl font-bold sm:text-3xl">Services, projects &amp; process</h2>
+        <p className="mt-3 max-w-[60ch] text-muted">
+          Sign up or log in to explore services, project work, the full process, and pricing.
+        </p>
+        <Link to="/signup" className="btn btn-primary mt-5">Create an account</Link>
+      </section>}
 
-      <section className="bg-surface py-16">
+      {user && <section className="bg-surface py-16">
         <div className="container-page">
           <div className="flex items-end justify-between gap-4">
             <h2 className="text-2xl font-bold sm:text-3xl">Selected work</h2>
@@ -106,7 +114,7 @@ export default function Home() {
                   <p className="mt-3 flex flex-wrap gap-1.5">{p.tech.map(t => <span key={t} className="tag">{t}</span>)}</p>
                 </li>))}</ul>}
         </div>
-      </section>
+      </section>}
 
       <section className="container-page py-16">
         <h2 className="text-2xl font-bold sm:text-3xl">Why work with me</h2>
@@ -120,7 +128,7 @@ export default function Home() {
         </dl>
       </section>
 
-      <section className="bg-surface py-16">
+      {user && <section className="bg-surface py-16">
         <div className="container-page">
           <div className="flex items-end justify-between gap-4">
             <h2 className="text-2xl font-bold sm:text-3xl">How a project runs</h2>
@@ -132,7 +140,7 @@ export default function Home() {
             ))}
           </ol>
         </div>
-      </section>
+      </section>}
 
       <section className="container-page py-20 text-center">
         <h2 className="mx-auto max-w-[24ch] text-3xl font-bold sm:text-4xl">Tell me what your business needs online.</h2>
