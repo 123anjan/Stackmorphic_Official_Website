@@ -21,14 +21,17 @@ export const about = {
       "Services",
       "Business websites, website design, and websites built for specific businesses",
     ],
-    ["Based in", ""], // e.g. 'Kolkata, India'
-    ["Experience", ""], // e.g. 'Building websites since 2023'
-    ["Languages", ""], // e.g. 'English, Bengali, Hindi'
+    ["Based in", "Kolkata, India"], // e.g. 'Kolkata, India'
+    ["Experience", "Building websites since 2023"], // e.g. 'Building websites since 2023'
+    ["Languages", "English, Bengali, Hindi"], // e.g. 'English, Bengali, Hindi'
   ],
 
   // Your story: 2 or 3 short paragraphs on how you got into web development and what you care about
   // when you build for clients. Keep it relevant to the people who hire you. Leave [] to hide this section.
-  story: [],
+  story: [
+    "I got into web development because I love the challenge of turning ideas into functional, user-friendly websites. My journey started when I built my first website for a local business, and I was hooked.",
+    "What I care about most is creating websites that not only look great but also perform well and provide an excellent user experience. I believe that a successful website is one that helps businesses achieve their goals and connect with their audience.",
+  ],
 
   // Education, courses, certificates. Only list ones you really hold.
   // Example: { title: 'B.Sc. in Computer Science', detail: 'University name, year' }
