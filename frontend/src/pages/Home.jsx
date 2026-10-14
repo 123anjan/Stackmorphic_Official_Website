@@ -8,11 +8,11 @@ import { useAuth } from '../lib/auth.jsx'
 
 const heroRoles = [
   'Freelancer',
-  'full stack developer',
-  'frontend developer',
-  'web developer',
-  'web designer',
-  'dev solutions',
+  'Full Stack Developer',
+  'Frontend Developer',
+  'Web Developer',
+  'Web Designer',
+  'Dev Solutions',
 ]
 
 export default function Home() {
