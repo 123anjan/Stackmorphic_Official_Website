@@ -7,6 +7,7 @@ import { usePage } from '../lib/usePage.js'
 import { useAuth } from '../lib/auth.jsx'
 
 const heroRoles = [
+  'Freelancer',
   'full stack developer',
   'frontend developer',
   'web developer',
