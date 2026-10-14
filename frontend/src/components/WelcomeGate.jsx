@@ -24,7 +24,12 @@ export default function WelcomeGate() {
   if (loading || user || isAccountPage || !open) return null;
 
   return (
-    <div className="fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-black/60 p-4">
+    <div
+      className="fixed inset-0 z-50 grid place-items-center overflow-y-auto bg-black/60 p-4"
+      onMouseDown={(event) => {
+        if (event.target === event.currentTarget) setOpen(false);
+      }}
+    >
       <section
         role="dialog"
         aria-modal="true"

@@ -33,6 +33,36 @@
   --danger: #fca5a5;
 }
 
+html.theme-transition,
+html.theme-transition * {
+  transition-property:
+    background-color, border-color, color, fill, stroke, box-shadow;
+  transition-duration: 1.4s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+::view-transition-old(root) {
+  animation: none;
+}
+
+::view-transition-new(root) {
+  animation: theme-reveal 1.4s cubic-bezier(0.4, 0, 0.2, 1) both;
+}
+
+@keyframes theme-reveal {
+  from {
+    clip-path: circle(
+      0 at var(--theme-reveal-x, 50vw) var(--theme-reveal-y, 50vh)
+    );
+  }
+  to {
+    clip-path: circle(
+      var(--theme-reveal-radius, 150vmax) at
+        var(--theme-reveal-x, 50vw) var(--theme-reveal-y, 50vh)
+    );
+  }
+}
+
 @layer base {
   html {
     scroll-padding-top: 5rem;
