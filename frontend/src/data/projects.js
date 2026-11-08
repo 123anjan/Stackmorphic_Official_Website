@@ -21,6 +21,28 @@ export const projects = [
     github: "https://github.com/123anjan/Radha-Krishna-Jewellers.git",
   },
   {
+    slug: "sumerix-global-employee-dashboard",
+    sample: false,
+    name: "Sumerix Global Employee Management Dashboard",
+    type: "Dashboard",
+    problem:
+      "A company needed a clear way to review employee information and manage everyday staff records.",
+    approach:
+      "I built a responsive single-page interface with searchable and filterable employee records, guided forms, and straightforward navigation.",
+    solution:
+      "A React dashboard for viewing, adding, editing, and deleting employee records, with changes saved in the browser.",
+    result:
+      "Administrators can manage employee records through one accessible dashboard that works across desktop and mobile screens.",
+    tech: ["React", "JavaScript"],
+    features: [
+      "Employee search and filters",
+      "Employee record management",
+      "Responsive dashboard",
+    ],
+    live: "https://123anjan.github.io/SumerixGlobal-projects-Task-3/",
+    github: "https://github.com/123anjan/SumerixGlobal-projects-Task-3.git",
+  },
+  {
     slug: "enquiry-management-app",
     sample: false,
     name: "Enquiry management app",
