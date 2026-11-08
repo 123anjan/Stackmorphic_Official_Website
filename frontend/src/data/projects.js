@@ -43,6 +43,99 @@ export const projects = [
     github: "https://github.com/123anjan/SumerixGlobal-projects-Task-3.git",
   },
   {
+    slug: "sumerix-global-employee-directory",
+    sample: false,
+    name: "Sumerix Global Employee Directory",
+    type: "Web application",
+    problem:
+      "Users needed a convenient way to browse a company's employees and find colleagues by name, department, or availability.",
+    approach:
+      "I built an accessible, responsive directory that fetches employee data and provides search, filters, sorting, and favorites.",
+    solution:
+      "A JavaScript employee directory with a detail panel and browser storage to remember user preferences.",
+    result:
+      "Users can quickly find and review employee information, with a personalized directory experience that persists in the browser.",
+    tech: ["JavaScript", "HTML5", "Tailwind CSS", "REST APIs"],
+    features: [
+      "Employee search and filters",
+      "Sort by name or department",
+      "Favorites",
+      "Employee details panel",
+    ],
+    live: "https://123anjan.github.io/SumerixGlobal-projects-Task-2/",
+    github: "https://github.com/123anjan/SumerixGlobal-projects-Task-2.git",
+  },
+  {
+    slug: "a-one-beauty-parlour",
+    sample: false,
+    name: "A-One Beauty Parlour",
+    type: "Business website",
+    problem:
+      "A local beauty parlour needed a welcoming online presence to introduce its services and help customers get in touch.",
+    approach:
+      "I created a warm, premium-style landing page with responsive layouts, clear service sections, and direct booking and contact actions.",
+    solution:
+      "A static website showcasing the parlour, its beauty and grooming services, an interactive gallery, and contact information.",
+    result:
+      "Visitors can browse the parlour's services and gallery, then use clear calls to action to enquire or book.",
+    tech: ["HTML5", "CSS3", "JavaScript"],
+    features: [
+      "Responsive design",
+      "Service showcase",
+      "Interactive image gallery",
+      "Booking and contact CTAs",
+    ],
+    live: "https://123anjan.github.io/A-One-Beauty-Parlour-website/",
+    github: "https://github.com/123anjan/A-One-Beauty-Parlour-website.git",
+  },
+  {
+    slug: "david-chus-china-bistro",
+    sample: false,
+    name: "David Chu's China Bistro",
+    type: "Restaurant website",
+    problem:
+      "A restaurant needed a clear online presence for customers to find its menu, location, hours, and delivery information.",
+    approach:
+      "I organized the restaurant's essential details into a branded website with dedicated menu, about, and awards navigation.",
+    solution:
+      "A restaurant website presenting key dining information, contact details, operating hours, and customer testimonials.",
+    result:
+      "Customers can quickly find restaurant details and access the menu and other key sections from the site.",
+    tech: ["HTML5", "CSS3", "JavaScript"],
+    features: [
+      "Restaurant information",
+      "Menu, about, and awards navigation",
+      "Hours and location details",
+      "Delivery information",
+    ],
+    live: "https://123anjan.github.io/Chinese_Restaurant_Website/",
+    github: "https://github.com/123anjan/Chinese_Restaurant_Website.git",
+  },
+  {
+    slug: "codealpha-image-gallery",
+    sample: false,
+    name: "Interactive Image Gallery",
+    type: "Web application",
+    problem:
+      "Visitors needed a responsive way to browse a large collection of nature and landscape photography.",
+    approach:
+      "I built a lightweight, filterable gallery with accessible keyboard navigation and an interactive fullscreen image preview.",
+    solution:
+      "A responsive image gallery with category filters, lightbox previews, and image download controls.",
+    result:
+      "Visitors can quickly filter the collection, explore images in detail, and download their favorites.",
+    tech: ["HTML5", "CSS3", "JavaScript"],
+    features: [
+      "Category filters",
+      "Fullscreen lightbox",
+      "Image downloads",
+      "Responsive layout",
+      "Keyboard navigation",
+    ],
+    live: "https://123anjan.github.io/Task-1_CodeAlpha_Image-Gallary/",
+    github: "https://github.com/123anjan/Task-1_CodeAlpha_Image-Gallary.git",
+  },
+  {
     slug: "enquiry-management-app",
     sample: false,
     name: "Enquiry management app",
