@@ -3,6 +3,30 @@
 // Only publish verified testimonials; placeholders must remain clearly labeled until replaced.
 export const projects = [
   {
+    slug: "appliance-care-service-center",
+    sample: false,
+    name: "Home Appliance Repair Service Center",
+    type: "Business website",
+    problem:
+      "A home appliance repair service needed a clear online presence to explain its services and help customers request support.",
+    approach:
+      "I built a service-focused React website with dedicated contact and booking pages, along with clear service and coverage information.",
+    solution:
+      "A responsive website for exploring appliance repair services, supported brands, service areas, and ways to get in touch or book a service.",
+    result:
+      "Customers can review repair services and move directly to the contact or booking flow.",
+    tech: ["React", "Tailwind CSS", "JavaScript"],
+    features: [
+      "Repair service overview",
+      "Brand and service-area information",
+      "Service booking",
+      "Contact page",
+    ],
+    live: "https://123anjan.github.io/Home_Appliance_Repair_Service_Center/",
+    github:
+      "https://github.com/123anjan/Home_Appliance_Repair_Service_Center.git",
+  },
+  {
     slug: "local-business-website",
     sample: false,
     name: "Radha Krishna Jewellers",
