@@ -6,7 +6,7 @@ export const site = {
   title: "Full-Stack Web Developer",
   email: "hello@example.com",
   whatsapp: "+919330492466", // digits only, with country code. SAMPLE: empty hides the button
-  cvUrl: "/Anjan_Basak_CV.pdf", // SAMPLE CV: replace the file in public/ with your real CV
+  cvUrl: "/website CV.pdf", // SAMPLE CV: replace the file in public/ with your real CV
   bookingUrl: "https://cal.com/anjan-basak-o2i9it/secret", // Cal.com or Calendly link
   social: {
     github: "https://github.com/123anjan",
